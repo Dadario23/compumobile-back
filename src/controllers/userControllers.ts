@@ -107,8 +107,8 @@ const userController = {
           "email",
           "profileImage",
         ],
-        order: [["createdAt", "DESC"]],
-        limit: 20,
+        /* order: [["createdAt", "DESC"]],
+        limit: 20, */
       });
       res.json(users).status(200);
     } catch (error) {

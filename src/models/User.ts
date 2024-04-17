@@ -64,7 +64,7 @@ User.init(
       defaultValue: "",
     },
   },
-  { sequelize: db, modelName: "users" }
+  { sequelize: db, modelName: "users", timestamps: false }
 );
 
 User.addHook("beforeCreate", async (user: User) => {

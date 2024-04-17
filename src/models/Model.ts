@@ -1,24 +1,22 @@
 import S from "sequelize";
 import db from "../config";
 
-class Brand extends S.Model {
-  declare id: number;
+class Model extends S.Model {
   declare name: string;
 }
 
-Brand.init(
+Model.init(
   {
     name: {
       type: S.STRING,
       allowNull: false,
-      unique: true,
     },
   },
   {
     sequelize: db,
-    modelName: "brands",
+    modelName: "models",
     timestamps: false,
   }
 );
 
-export default Brand;
+export default Model;

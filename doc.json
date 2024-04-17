@@ -1,0 +1,119 @@
+{
+  "comandos_linux": [
+    {
+      "nombre": "Quién está ocupando el puerto 5432",
+      "comando": "sudo lsof -i :5432",
+      "descripcion": "Muestra qué proceso está utilizando el puerto 5432."
+    },
+    {
+      "nombre": "Matar el puerto 5432",
+      "comando": "sudo kill <PID>",
+      "descripcion": "Detiene el proceso que está utilizando el puerto 5432. Reemplaza <PID> con el ID del proceso."
+    },
+    {
+      "nombre": "Actualizar paquetes",
+      "comando": "sudo apt update",
+      "descripcion": "Actualiza la lista de paquetes disponibles, pero no instala o actualiza ningún paquete."
+    },
+    {
+      "nombre": "Instalar paquetes",
+      "comando": "sudo apt install [nombre del paquete]",
+      "descripcion": "Instala el paquete especificado en el sistema."
+    }
+  ],
+  "configuracion_postgres": [
+    {
+      "nombre": "Iniciar sesión en PSQL",
+      "comando": "sudo -u postgres psql",
+      "descripcion": "Inicia sesión en el shell de PostgreSQL como el usuario 'postgres'."
+    },
+    {
+      "nombre": "Iniciar PSQL",
+      "comando": "sudo service postgresql start",
+      "descripcion": "Inicia el servicio de PostgreSQL."
+    }
+  ],
+  "configuracion_aplicaciones": [
+    {
+      "nombre": "Configuración .env",
+      "contenido": {
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_DB": "fdeliverydb",
+        "JWT_SECRET": "MILANESA"
+      },
+      "descripcion": "Configuración de variables de entorno para la aplicación."
+    }
+  ],
+  "herramientas_externas": [
+    {
+      "nombre": "Cruce",
+      "descripcion": "Correo de contacto: busquedas@e-cruce.com."
+    },
+    {
+      "nombre": "Botón de inicio de sesión con Gmail",
+      "enlace": "https://uiverse.io/Yaya12085/sharp-quail-80",
+      "descripcion": "Integración de botón de inicio de sesión con Gmail para la aplicación."
+    }
+  ],
+  "docker": [
+    {
+      "nombre": "Crear imagen Docker",
+      "comando": "sudo docker build -t [nombre de la imagen] .",
+      "descripcion": "Crea una nueva imagen Docker a partir del Dockerfile en el directorio actual."
+    },
+    {
+      "nombre": "Correr aplicación Dockerizada",
+      "comando": "sudo docker run -d --name [nombre del contenedor] -p [puerto externo]:[puerto interno] [nombre de la imagen]",
+      "descripcion": "Ejecuta un contenedor Dockerizado de la aplicación."
+    }
+  ],
+  "otros": [
+    {
+      "nombre": "Extensión para Hyper (Terminal)",
+      "enlace": "https://hyper.is/store/hypercwd",
+      "descripcion": "Enlace para descargar una extensión para Hyper (Terminal)."
+    },
+    {
+      "nombre": "Configurar Hyper para mostrar el prompt 'Robbyrussell'",
+      "descripcion": "Editar las configuraciones de Hyper para mostrar el prompt 'Robbyrussell'."
+    },
+    {
+      "nombre": "Nuestro buscador maestro",
+      "enlace": "https://www.cerebroapp.com/",
+      "descripcion": "Enlace a nuestro buscador maestro."
+    },
+    {
+      "nombre": "Traducir videos a otros idiomas",
+      "enlace": "https://app.heygen.com/login",
+      "descripcion": "Enlace para traducir videos a otros idiomas."
+    },
+    {
+      "nombre": "Componentes HTML, CSS y JS",
+      "enlace": "https://github.com/atherosai/ui",
+      "descripcion": "Enlace a componentes HTML, CSS y JS."
+    }
+  ],
+  "proceso_solucion_problema": {
+    "identificacion_problema": "La aplicación no podía conectarse a la base de datos PostgreSQL debido a un error de resolución del nombre 'postgres'.",
+    "acciones_realizadas": [
+      {
+        "descripcion": "Verificación de la configuración del hostname",
+        "resultado": "La resolución del nombre 'postgres' falló al ejecutar el comando 'ping postgres'."
+      },
+      {
+        "descripcion": "Revisión del archivo /etc/hosts",
+        "resultado": "No se encontró una entrada para 'postgres' en el archivo /etc/hosts."
+      },
+      {
+        "descripcion": "Agregado de entrada en /etc/hosts",
+        "resultado": "Se agregó manualmente una entrada para 'postgres' en el archivo /etc/hosts, asignándole la dirección IP 127.0.0.1."
+      },
+      {
+        "descripcion": "Verificación de la resolución del nombre",
+        "resultado": "Después de agregar la entrada en el archivo /etc/hosts, el nombre 'postgres' se resolvió correctamente a la dirección IP 127.0.0.1 y se recibieron respuestas satisfactorias del ping."
+      }
+    ],
+    "solucion": "El problema se resolvió al agregar manualmente una entrada para 'postgres' en el archivo /etc/hosts, lo que permitió que el nombre se resolviera correctamente a la dirección IP 127.0.0.1. Esto aseguró que la aplicación pudiera conectarse correctamente al servidor PostgreSQL utilizando el nombre 'postgres'."
+  }
+}
