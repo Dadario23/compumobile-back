@@ -3,7 +3,7 @@ import usersRouter from "./users";
 import devicesRouter from "./devices";
 import brandRouter from "./brands";
 import modelRouter from "./models";
-import appintmentsRouter from "./appointments";
+import appointmentsRouter from "./appointments";
 import schedulesRouter from "./schedules";
 
 const router: Router = express.Router();
@@ -16,7 +16,7 @@ router.use("/users", usersRouter);
 router.use("/devices", devicesRouter);
 router.use("/brands", brandRouter);
 router.use("/models", modelRouter);
-router.use("/appintments", appintmentsRouter);
+router.use("/appointments", appointmentsRouter);
 router.use("/schedules", schedulesRouter);
 
 export default router;

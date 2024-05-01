@@ -2,22 +2,22 @@ import { DataTypes, Model } from "sequelize";
 import db from "../config";
 
 class Device extends Model {
-  declare marca: string;
-  declare modelo: string;
-  declare falla: string;
+  declare brand: string;
+  declare model: string;
+  declare fail: string;
 }
 
 Device.init(
   {
-    marca: {
+    brand: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    modelo: {
+    model: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    falla: {
+    fail: {
       type: DataTypes.STRING,
       allowNull: false,
     },
