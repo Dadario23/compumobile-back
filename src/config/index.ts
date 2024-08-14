@@ -1,10 +1,14 @@
 import { Sequelize } from "sequelize";
 require("dotenv").config();
 
+/* console.log("DB:", process.env.POSTGRES_DB);
+console.log("User:", process.env.POSTGRES_USER);
+console.log("Password:", process.env.POSTGRES_PASSWORD); */
+
 const db = new Sequelize(
-  process.env.POSTGRES_DB || "", // Si es undefined, se asigna una cadena vacía
-  process.env.POSTGRES_USER || "",
-  process.env.POSTGRES_PASSWORD || "",
+  process.env.POSTGRES_DB || "compumobiledb",
+  process.env.POSTGRES_USER || "postgres",
+  process.env.POSTGRES_PASSWORD || "postgres",
   {
     host: "localhost",
     dialect: "postgres",

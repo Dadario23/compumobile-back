@@ -6,7 +6,7 @@ const scheduleController = {
   getAvailableSchedules: async (req: Request, res: Response) => {
     try {
       const { date } = req.query; // Obtener la fecha de la consulta
-      console.log(date);
+      console.log("FECHA SELECCIONADA", date);
       const horariosDisponibles = await Schedule.findAll({
         where: {
           date: date,

@@ -9,8 +9,12 @@ Schedule.init(
       type: S.DataTypes.DATEONLY, // Tipo de datos para almacenar solo la fecha sin la hora
       allowNull: false,
     },
-    hour: {
-      type: S.DataTypes.STRING,
+    startHour: {
+      type: S.DataTypes.STRING, // Almacena la hora de inicio
+      allowNull: false,
+    },
+    endHour: {
+      type: S.DataTypes.STRING, // Almacena la hora de fin
       allowNull: false,
     },
     available: {

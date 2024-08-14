@@ -29,22 +29,28 @@ const seedSchedules = async () => {
 
       // Crear horarios para la fecha actual
       const currentDay = date.format("YYYY-MM-DD");
-      let currentTime = moment(startTime, "HH:mm");
+      let currentStartTime = moment(startTime, "HH:mm");
       const endTimeMoment = moment(endTime, "HH:mm");
       const schedules = [];
 
-      while (currentTime.isSameOrBefore(endTimeMoment)) {
+      while (currentStartTime.isBefore(endTimeMoment)) {
+        const currentEndTime = currentStartTime.clone().add(15, "minutes");
+
+        // Verificar que el horario de fin no exceda el tiempo de cierre
+        if (currentEndTime.isAfter(endTimeMoment)) break;
+
         // Generar un valor aleatorio para la propiedad "available"
         const available = Math.random() < 0.5; // 50% de probabilidad de ser true o false
 
         schedules.push({
           date: currentDay,
-          hour: currentTime.format("HH:mm"),
+          startHour: currentStartTime.format("HH:mm"),
+          endHour: currentEndTime.format("HH:mm"),
           available,
         });
 
-        // Agregar 30 minutos al tiempo actual
-        currentTime.add(30, "minutes");
+        // Avanzar al siguiente intervalo de 15 minutos
+        currentStartTime.add(15, "minutes");
       }
 
       // Crear los registros de horarios en la base de datos

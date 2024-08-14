@@ -1,7 +1,7 @@
 // seed/seedDevices.js
 
-import { Device, Brand, Model } from "../models";
-import { devices, brands, models } from "./seed";
+import { Brand, Model } from "../models";
+import { brands, models } from "./seed";
 
 const seedDevices = async () => {
   try {

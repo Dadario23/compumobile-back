@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Appointment from "../models/Appointment";
+import { Schedule } from "../models";
 
 /* interface CustomRequest extends Request {
   user?: {
@@ -11,11 +12,18 @@ const appointmentController = {
   createAppointment: async (req: Request, res: Response): Promise<Response> => {
     try {
       const { userId, scheduleId } = req.body;
-      //console.log(userId, date); // Se espera que userId y date estén en el cuerpo de la solicitud
+
       const newAppointment = await Appointment.create({
         userId,
         scheduleId,
       });
+
+      // Actualizar el estado del horario reservado a `false`
+      await Schedule.update(
+        { available: false },
+        { where: { id: scheduleId } }
+      );
+
       return res.status(201).json(newAppointment); // Devolver el nuevo turno creado en formato JSON
     } catch (error) {
       if (error instanceof Error) {

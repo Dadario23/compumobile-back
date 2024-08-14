@@ -1,7 +1,7 @@
 import Device from "../models/Device";
 import { Request, Response } from "express";
 
-const brandController = {
+const deviceController = {
   registerDevice: async (req: Request, res: Response): Promise<Response> => {
     try {
       const { brand, model, fail, userId } = req.body;
@@ -24,6 +24,22 @@ const brandController = {
       return res.status(500).json({ error: "Error interno del servidor." });
     }
   },
+  getUserDevices: async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const { userId } = req.params;
+      console.log("USER ID", userId);
+      const devices = await Device.findAll({ where: { userId } });
+      if (devices.length > 0) {
+        return res.status(200).send(devices);
+      } else {
+        return res
+          .status(404)
+          .json({ error: "No se encontraron dispositivos para este usuario." });
+      }
+    } catch (error) {
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+  },
 };
 
-export default brandController;
+export default deviceController;

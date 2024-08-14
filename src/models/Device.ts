@@ -5,6 +5,7 @@ class Device extends Model {
   declare brand: string;
   declare model: string;
   declare fail: string;
+  declare userId: number; // Añadimos el campo userId
 }
 
 Device.init(
@@ -19,6 +20,11 @@ Device.init(
     },
     fail: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userId: {
+      // Añadimos la definición del campo userId
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
